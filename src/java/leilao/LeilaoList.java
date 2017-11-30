@@ -53,21 +53,15 @@ public class LeilaoList {
     public String getJson() {
         Gson g = new Gson();
         ArrayList<Produto> lista = new ArrayList<>();
-        // try {
-        //FileReader file = new FileReader("list.json");            
+            
         try {
-//            Reader in = new InputStreamReader(getClass().getResourceAsStream("list.json"));
-//            
+           
             FileReader arq = new FileReader("list.json");
             BufferedReader lerArq = new BufferedReader(arq);
 
-            String in = lerArq.readLine(); 
-
-//            while (in != null) {               
-//                System.out.println("linha");
-//               in += lerArq.readLine();
-//            }
-            return g.toJson(in);
+            String json = lerArq.readLine(); 
+            json = json.replace("\\", "");           
+            return g.toJson(json);
         } catch (Exception e) {
             Produto p = new Produto("PC", "Intel I7 7200", 2000);
             lista.add(p);
